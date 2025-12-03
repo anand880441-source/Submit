@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Visibility Toggle</title>
+
+    <style>
+        img{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="myImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+    <button onclick="toggleImage()">Hide Image</button>
+
+    <script>
+        window.onload = function () {
+            const savedState = sessionStorage.getItem('imageVisible');
+            if (savedState === 'false') {
+                document.getElementById('myImage').style.display = 'none';
+                document.querySelector('button').textContent = 'Show Image';
+            }
+        };
+
+        function toggleImage() {
+            const img = document.getElementById('myImage');
+            const btn = document.querySelector('button');
+
+            if (img.style.display === 'none') {
+                img.style.display = 'block';
+                btn.textContent = 'Hide Image';
+                sessionStorage.setItem('imageVisible', 'true');
+            } else {
+                img.style.display = 'none';
+                btn.textContent = 'Show Image';
+                sessionStorage.setItem('imageVisible', 'false');
+            }
+        }
+    </script>
+</body>
+
+</html>
